@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        label {
+            font-weight: bold;
+            background-color: rgba(1, 91, 86, 0.1);
+            color: black;
+            padding: 10px;
+            border-radius: 10px 0px;
+        }
+
+        input {
+            width: 30%;
+            margin: 10px 0px;
+        }
+        .separator {
+            border-radius: 20px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 400px;
+            margin-bottom: 10px;
+            background-color: rgba(0, 0, 0, 0.05);
+            box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+        }
+
+        button {
+            background-color: black;
+            color: white;
+            border: 1px white;
+            border-radius: 10px;
+            padding: 10px;
+            
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom, rgb(41, 198, 190), rgb(33, 152, 147));
+            color: black;
+            border: 1px black;
+            transition: 0.5s;
+        }
+        .boxext {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .bloco {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+        }
+        input {
+            padding: 5px 10px;
+            outline: none;
+            text-align: center;
+        }
+
+        p {
+            margin: 0;
+            padding: 5px;
+        }
+        .ind {
+            background-color: rgb(0, 0, 0);
+            color: white;
+        }
+
+        .afesta {
+            margin-bottom: 5px;
+        }
+        .botoes {
+            display: flex;
+            width: 33%;
+            justify-content: space-between;   
+        }
+
+        .block {
+            padding: 10px;
+            margin-top: 15px;
+            color: white;
+            border-radius: 20px;
+            background-color: black;
+            width: 45%;
+            height: 90px;
+        }
+
+        .gen {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .gen label {
+            background-color: transparent;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="boxext">
+        <div class="separator">
+            <label class="ind">001</label>
+            <label>Digite um número: </label>
+            <input name="nume" type="number" id="n1" required="required">
+            <div class="botoes">
+                <button onclick="valnum()">Enviar</button>
+                <button onclick="limpar()">Limpar</button>
+            </div>
+            <div class="block">
+                <p id="resultado"></p>
+            </div>
+            <script>
+                function valnum () {
+                    var resultado = document.querySelector("#resultado");
+                    let n1 = parseFloat(document.querySelector("#n1").value);
+
+                    if (n1 === 0) {
+                        resultado.innerHTML = (`Número: ${n1}<br>`);
+                        resultado.innerHTML += ("É nulo");
+                    }
+                    else if (n1 % 2 === 0) {
+                        let p = n1;
+                        resultado.innerHTML = (`Número: ${p}<br>`);
+                        resultado.innerHTML += ("É par");
+                    }else{
+                        let i = n1;
+                        resultado.innerHTML = (`Número: ${i}<br>`);
+                        resultado.innerHTML += ("É impar");
+                    }
+                }
+
+                function limpar() {
+                    var resultado = document.querySelector("#resultado");
+                    resultado.innerHTML = ("");
+                } 
+            </script>
+        </div>
+        <div class="separator">
+            <label class="ind">002</label>
+            <label>Digite um número:</label>
+            <input type="number" id='verin1'>
+            <div class="botoes">
+                <button onclick="maiorCent()">Enviar</button>
+                <button onclick="limpar2()">Limpar</button>
+            </div>
+            <div class="block">
+                <p id="resultado2"></p>
+            </div>
+            <script>
+                function maiorCent() {
+                    var resultado = document.querySelector("#resultado2");
+                    let n1 = parseFloat(document.querySelector("#verin1").value);
+
+                    if (n1 > 100) {
+                        resultado.innerHTML = (n1);
+                    }else {
+                        resultado.innerHTML = ("0");
+                    }
+                }
+
+                function limpar2() {
+                    var resultado = document.querySelector("#resultado2");
+                    resultado.innerHTML = ("");
+                }
+            </script>
+        </div>
+        <div class="separator">
+            <label class="ind">003</label>
+            <label class="afesta">Peso Ideal</label>
+            <label>Altura</label>
+            <input type="number" id="h">
+            <div class="gen">
+                <input id="masculino" type="radio" value="masculino" name="genero">
+                <label>Masculino</label>
+                <input id ="feminino" type="radio" value="femino" name="genero">
+                <label>Feminino</label>
+            </div>
+            <div class="botoes">
+                <button onclick="imc()">Enviar</button>
+                <button onclick="limpar3()">Limpar</button>
+            </div>
+            <div class="block">
+                <p id="resultado3"></p>
+            </div>
+            <script>
+                function imc () {
+                    var resultado = document.querySelector("#resultado3");
+                    let masculino = document.querySelector("#masculino");
+                    let feminino = document.querySelector("#feminino");
+                    let h = parseFloat(document.querySelector("#h").value);
+                    let calc;
+
+                    if (masculino.checked == true) {
+                        calc = (72.7*h) - 58;
+                        resultado.innerHTML = (`O peso ideal para um homem de`);
+                        resultado.innerHTML += (`${h.toFixed(2)} altura é de ${calc.toFixed(2)} kg`);
+                    }else if (feminino.checked == true) {
+                        calc = (62.1*h) - 44.7;
+                        resultado.innerHTML = (`O peso ideal para uma mulher de`);
+                        resultado.innerHTML += (`${h.toFixed(2)} altura é de ${calc.toFixed(2)} kg`);
+                    }
+                    console.log(typeof(calc));
+                }
+
+                function limpar3() {
+                    var resultado = document.querySelector("#resultado3");
+                    resultado.innerHTML = ("");
+                }
+            </script>  
+        </div>
+    </div>
+
+    
+</body>
+</html>
