@@ -1,6 +1,6 @@
 # JsDOMbasic02
 
-URL do projeto: https://douradoalt.github.io/JsDOMbasic02/
+URL do projeto: https://douradoctrl.github.io/JsDOMbasic02/
 
 ### Descrição 
 
